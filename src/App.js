@@ -52,7 +52,7 @@ class App extends Component {
         <Yelp location={this.state.location}/>
         <Meetup location={this.state.location}/>
         <MovieDB location={this.state.location}/>
-        <Hiking />
+        <Hiking location={this.state.location}/>
       </div>
     );
   }

@@ -15,7 +15,7 @@ class Meetup extends Component {
       .get('https://city-explorer-backend.herokuapp.com/location')
       .query({data: this.props.location});
     let meetup = await request
-      .get(`https://city-explorer-backend.herokuapp.com/meetups?data%5Bid%5D=${location.body.id}&data%5Bsearch_query%5D=${this.props.location}`);
+      .get(`https://city-explorer-backend.herokuapp.com/meetups?data%5Blatitude%5D=${location.body.latitude}&data%5Blongitude%5D=${location.body.longitude}`);
     console.log(meetup.body);
     return meetup.body;
   }
