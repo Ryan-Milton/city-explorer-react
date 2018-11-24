@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import request from 'superagent';
 
 class MovieDB extends Component {
   constructor(props) {
@@ -9,9 +10,18 @@ class MovieDB extends Component {
     }
   }
 
+  movie = async () => {
+    let movie = await request
+      .get(`https://city-explorer-backend.herokuapp.com/movies?&data%5Bsearch_query%5D=${this.props.location}`);
+    console.log(movie.body);
+    return movie.body;
+  }
+
   render() {
     return (
-      <div></div>
+      <section id={this.movie()}>
+        
+      </section>
     )
   }
 }

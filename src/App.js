@@ -51,7 +51,7 @@ class App extends Component {
         <DarkSky location={this.state.location}/>
         <Yelp location={this.state.location}/>
         <Meetup location={this.state.location}/>
-        <MovieDB />
+        <MovieDB location={this.state.location}/>
         <Hiking />
       </div>
     );
