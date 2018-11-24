@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import request from 'superagent';
+// import request from 'superagent';
 
 import Title from './modules/title.js';
 import Form from './modules/form.js';
@@ -17,19 +17,29 @@ class App extends Component {
 
     this.state = {
       location: '',
+      latitude: '',
+      longitude: '',
     }
   }
 
   handleFormSubmit = async (stuffFromTheForm) => {
     let formStuff = await stuffFromTheForm;
-    console.log(`This ->${formStuff}<- came from the form`);
+    // console.log(`This ->${formStuff}<- came from the form`);
+    this.setState({ location: formStuff });
+    // console.log(this.state.location);
   }
 
-  locationData = async (query) => {
-    let results = await request
-      .get('/location')
-      .query({query: this.state.location});
-    console.log(results);
+  locationData = async (stuffFromGoogs) => {
+
+    let stuffs = await stuffFromGoogs;
+    console.log(stuffs);
+    let stuffsBody = stuffs.result.body
+    let lat = stuffsBody.latitude;
+    let long = stuffsBody.longitude;
+    console.log('Result from backend for location query: ',stuffsBody);
+    console.log(`${this.state.location} latitude: ${lat}`);
+    console.log(`${this.state.location} longitude: ${long}`);
+    
   }
 
   render() {
@@ -37,8 +47,8 @@ class App extends Component {
       <div className="App">
         <Title />
         <Form handleFormSubmit={this.handleFormSubmit}/>
-        <GoogleMap locationData={this.locationData}/>
-        <DarkSky />
+        <GoogleMap locationData={this.locationData} location={this.state.location}/>
+        <DarkSky location={this.state.location}/>
         <Yelp />
         <Meetup />
         <MovieDB />
