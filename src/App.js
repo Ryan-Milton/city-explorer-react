@@ -50,7 +50,7 @@ class App extends Component {
         <GoogleMap locationData={this.locationData} location={this.state.location}/>
         <DarkSky location={this.state.location}/>
         <Yelp location={this.state.location}/>
-        <Meetup />
+        <Meetup location={this.state.location}/>
         <MovieDB />
         <Hiking />
       </div>
