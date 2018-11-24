@@ -49,7 +49,7 @@ class App extends Component {
         <Form handleFormSubmit={this.handleFormSubmit}/>
         <GoogleMap locationData={this.locationData} location={this.state.location}/>
         <DarkSky location={this.state.location}/>
-        <Yelp />
+        <Yelp location={this.state.location}/>
         <Meetup />
         <MovieDB />
         <Hiking />

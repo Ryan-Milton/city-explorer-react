@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import request from 'superagent';
 
 class Yelp extends Component {
   constructor(props) {
@@ -9,9 +10,18 @@ class Yelp extends Component {
     }
   }
 
+  yelp = async () => {
+    let yelp = await request
+      .get(`https://city-explorer-backend.herokuapp.com/yelp?data%5Bsearch_query%5D=${this.props.location}`);
+    console.log(yelp.body);
+    return yelp.body;
+  }
+
   render() {
     return (
-      <div></div>
+      <section id={this.yelp()}>
+        
+      </section>
     )
   }
 }
