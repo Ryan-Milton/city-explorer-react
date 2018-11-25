@@ -48,11 +48,11 @@ class App extends Component {
         <Title />
         <Form handleFormSubmit={this.handleFormSubmit}/>
         <GoogleMap locationData={this.locationData} location={this.state.location}/>
-        <DarkSky location={this.state.location}/>
+        {/* <DarkSky location={this.state.location}/>
         <Yelp location={this.state.location}/>
         <Meetup location={this.state.location}/>
         <MovieDB location={this.state.location}/>
-        <Hiking location={this.state.location}/>
+        <Hiking location={this.state.location}/> */}
       </div>
     );
   }

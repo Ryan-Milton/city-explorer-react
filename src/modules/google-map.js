@@ -10,6 +10,8 @@ class GoogleMap extends Component {
 
     this.state = {
       locationData: '',
+      longitude: '',
+      latitude: '',
       map: ''
     }
   }
@@ -27,15 +29,18 @@ class GoogleMap extends Component {
     let result = await this.data();
       let map = await request
         .get(`https://maps.googleapis.com/maps/api/staticmap?center=${result.body.latitude},${result.body.longitude}&zoom=13&size=600x300&key=AIzaSyDp0Caae9rkHUHwERAFzs6WN4_MuphTimk`);
+      console.log(map);
     let imgURL = map.req.url;
     console.log(imgURL);
     return imgURL;
   }
 
+  
+
   render() {
     return (
-      <div id={this.data()}>
-        <img src={this.map()} alt="A map"></img>
+      <div id={this.map()}>
+        
       </div>
     );
   }
